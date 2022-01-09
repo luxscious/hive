@@ -12,10 +12,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCookies } from "react-cookie";
 import Login from "./components/Login.js";
 import Home from "./Home.js";
-
+import Resources from "./Resources.js";
 import "./index.css";
 import Profile from "./Profile.js";
-
+import Landing from "./Landing.js";
 const firebaseConfig = {
   apiKey: "AIzaSyA5khC5wSAUfQ3UJfaMQofsiiNKhX7siXE",
   authDomain: "beehive-88888888.firebaseapp.com",
@@ -59,13 +59,18 @@ function App() {
       <Router>
         <>
           <Switch>
+            <Route path="/landing">
+              <Landing />
+            </Route>
             <Route path="/login">
               {user ? <Redirect to="/dashboard" /> : <Login />}
             </Route>
             <Route path="/profile">
               {user ? <Profile /> : <Redirect to="/Login" />}
             </Route>
-
+            <Route path="/resources">
+              <Resources />
+            </Route>
             <Route path="/dashboard">
               <Home />
             </Route>

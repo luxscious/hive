@@ -3,11 +3,52 @@ import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCookies } from "react-cookie";
 import NavBar from "./components/NavBar";
-import { makeStyles } from "@material-ui/core";
+import { Avatar, makeStyles } from "@material-ui/core";
 import axios from "axios";
+import bg from "./assets/combBg.svg";
 const useStyles = makeStyles((theme) => ({
   container: {
+    position: "fixed",
+    padding: 0,
+
+    width: "100%",
+    height: "100%",
+    backgroundImage: `url(${bg})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover ",
+
+    display: "flex",
+    overflow: "auto",
+    alignItems: "center",
+    flexDirection: "column",
     marginTop: 90,
+  },
+  login: {
+    fontFamily: "Raleway Light",
+    fontSize: 64,
+  },
+
+  items: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: 125,
+  },
+  button: {
+    backgroundColor: "rgb(255,102,102,85%)",
+    color: "white",
+    fontFamily: "Raleway",
+    fontWeight: "semi-bold",
+    letterSpacing: 2,
+    width: 259,
+    height: 59,
+    border: 0,
+    borderRadius: 40,
+    "&:hover": {
+      backgroundColor: "#FF6666",
+      cursor: "pointer",
+    },
   },
 }));
 
@@ -37,19 +78,26 @@ const Profile = () => {
       });
   }, []);
   return (
-    <div>
+    <>
       <NavBar page={"profile"} />
       <div className={classes.container}>
         {cookies.oAuth ? (
-          <div>
-            <h1>Hello {user?.login}</h1>
+          <div className={classes.items}>
+            <h1 className={classes.login}>{cookies.username},</h1>
+            <Avatar
+              alt="profile"
+              src={user.avatar_url}
+              style={{ width: 193, height: 193, padding: 25 }}
+            />
             <form onSubmit={signOut}>
-              <button type="submit">Sign Out</button>
+              <button type="submit" className={classes.button}>
+                BUZZ OUT
+              </button>
             </form>
           </div>
         ) : null}
       </div>
-    </div>
+    </>
   );
 };
 export default Profile;

@@ -57,7 +57,7 @@ function Navbar(props) {
   return (
     <AppBar position="fixed" className={classes.bar}>
       <Toolbar className={classes.toolBar}>
-        <Link to="/" className={classes.logoLink}>
+        <Link to="/landing" className={classes.logoLink}>
           <div className={classes.logo}>
             <img src={logo} alt="Logo" width="80" />
             <h1 className={classes.logoText}>HIVE</h1>
@@ -65,7 +65,7 @@ function Navbar(props) {
         </Link>
         <div className={classes.navlinks}>
           <Link
-            to="/"
+            to="/resources"
             className={
               props.page === "resources" ? classes.currentLink : classes.link
             }
@@ -90,16 +90,6 @@ function Navbar(props) {
               YOUR HIVE
             </Link>
           ) : null}
-
-          {/* {!user ? (
-            <Link to="/Login" className={classes.link}>
-              LOGIN
-            </Link>
-          ) : (
-            <Link to="/Profile" className={classes.link}>
-              PROFILE
-            </Link>
-          )} */}
         </div>
       </Toolbar>
     </AppBar>

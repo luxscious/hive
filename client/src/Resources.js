@@ -113,7 +113,7 @@ function RenderList(list) {
   });
 }
 
-const Home = () => {
+const Resources = () => {
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
   const [username, setUsername] = useState("");
@@ -145,7 +145,7 @@ const Home = () => {
 
   return (
     <>
-      <NavBar page={"community"} />
+      <NavBar page={"resources"} />
       <div className={classes.container}>
         <div className={classes.inspoText}></div>
         <div
@@ -277,4 +277,4 @@ const Home = () => {
     </>
   );
 };
-export default Home;
+export default Resources;

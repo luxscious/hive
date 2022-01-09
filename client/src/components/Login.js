@@ -57,9 +57,8 @@ const useStyles = makeStyles((theme) => ({
   items: {
     display: "flex",
     flexDirection: "column",
-    //justifyContent: "center",
+
     alignItems: "center",
-    // marignTop: -20,
   },
 }));
 const Login = () => {
