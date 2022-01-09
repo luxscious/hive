@@ -1,10 +1,7 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { makeStyles } from "@material-ui/core";
 import { useCookies } from "react-cookie";
 import { Avatar } from "@material-ui/core";
@@ -23,6 +20,7 @@ export default function ProjectCard(props) {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const classes = useStyles();
 
+  let date = project.lastUpdated.substring(0, 10);
   return (
     <div style={{ paddingBottom: 20 }}>
       <Card className={classes.card} style={{ backgroundColor: "#C4C4C4" }}>
@@ -117,6 +115,27 @@ export default function ProjectCard(props) {
                 ></div>
               </>
             )}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                width: "100%",
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              <h1
+                style={{
+                  fontFamily: "Raleway",
+                  fontSize: 14,
+                  textAlign: "center",
+                  alignSelf: "center",
+                  justifyContent: "center",
+                }}
+              >
+                LAST UPDATED: {"   "} {date}
+              </h1>
+            </div>
           </div>
           <div
             style={{

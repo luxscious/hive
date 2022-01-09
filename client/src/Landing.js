@@ -5,9 +5,7 @@ import { useCookies } from "react-cookie";
 import NavBar from "./components/NavBar";
 import { makeStyles } from "@material-ui/core";
 import bg from "./assets/ProfileBg.svg";
-
 import { Link } from "react-router-dom";
-
 import text from "./assets/landingTxt.svg";
 const useStyles = makeStyles((theme) => ({
   container: {
