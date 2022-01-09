@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCookies } from "react-cookie";
@@ -10,7 +10,6 @@ import text from "./assets/inspoText.svg";
 import plus from "./assets/plus.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { StylesContext } from "@material-ui/styles";
 const useStyles = makeStyles((theme) => ({
   container: {
     position: "fixed",

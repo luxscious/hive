@@ -24,7 +24,7 @@ export default function ProjectCard(props) {
   const project = props.project;
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const classes = makeStyles();
-  console.log(project.userPhoto);
+
   return (
     <div style={{ paddingBottom: 20 }}>
       <Card className={classes.card} style={{ backgroundColor: "#C4C4C4" }}>

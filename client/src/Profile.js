@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCookies } from "react-cookie";
@@ -62,7 +62,6 @@ const Profile = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [loading, setLoading] = useState(true);
 
-  console.log("USER", user);
   const signOut = (e) => {
     e.preventDefault();
     removeCookie("oAuth");
@@ -85,28 +84,32 @@ const Profile = () => {
     <>
       <NavBar page={"profile"} />
       <div className={classes.container}>
-        {cookies.oAuth ? (
+        {loading ? (
+          <div
+            style={{
+              position: "fixed",
+              top: 400,
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: 5,
+              }}
+            >
+              <CircularProgress style={{ color: "#FF6666" }} />
+            </Box>
+          </div>
+        ) : (
           <div className={classes.items}>
             <h1 className={classes.login}>{user?.login},</h1>
-            {loading ? (
-              <>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: 5,
-                  }}
-                >
-                  <CircularProgress style={{ color: "#FF6666" }} />
-                </Box>
-              </>
-            ) : (
-              <Avatar
-                alt="profile"
-                src={user?.avatar_url}
-                style={{ width: 193, height: 193, padding: 25 }}
-              />
-            )}
+
+            <Avatar
+              alt="profile"
+              src={user?.avatar_url}
+              style={{ width: 193, height: 193, padding: 25 }}
+            />
 
             <form onSubmit={signOut}>
               <button type="submit" className={classes.button}>
@@ -114,7 +117,7 @@ const Profile = () => {
               </button>
             </form>
           </div>
-        ) : null}
+        )}
       </div>
     </>
   );
