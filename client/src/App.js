@@ -16,13 +16,14 @@ import Resources from "./Resources.js";
 import "./index.css";
 import Profile from "./Profile.js";
 import Landing from "./Landing.js";
+console.log(process.env);
 const firebaseConfig = {
-  apiKey: "AIzaSyA5khC5wSAUfQ3UJfaMQofsiiNKhX7siXE",
-  authDomain: "beehive-88888888.firebaseapp.com",
-  projectId: "beehive-88888888",
-  storageBucket: "beehive-88888888.appspot.com",
-  messagingSenderId: "704359860217",
-  appId: "1:704359860217:web:be129ca99d7714bf0b1f28",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_AUTH_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MSG_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 const firebaseApp = initializeApp(firebaseConfig);
 function App() {
@@ -31,7 +32,6 @@ function App() {
   const [user, loading, error] = useAuthState(auth);
   const [cookies, setCookie] = useCookies(["user"]);
 
-  // console.log(loading);
   useEffect(() => {
     getRedirectResult(auth)
       .then((result) => {
