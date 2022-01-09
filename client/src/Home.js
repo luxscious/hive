@@ -10,6 +10,7 @@ import text from "./assets/inspoText.svg";
 import plus from "./assets/plus.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { StylesContext } from "@material-ui/styles";
 const useStyles = makeStyles((theme) => ({
   container: {
     position: "fixed",
@@ -45,12 +46,14 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "100%",
     marginTop: 20,
     borderRadius: "20px 20px 0 0",
+    alignItems: "center",
   },
   cards: {
     height: "100%",
-    paddingLeft: 113,
+    minWidth: 760,
     paddingTop: 61,
-    alignSelf: "center",
+    display: "flex",
+    flexDirection: "column",
   },
   post: {
     display: "flex",
@@ -67,8 +70,41 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
   },
   sideBar: {
+    //display: "flex",
+    flexDirection: "column",
+    width: 216,
+    borderColor: "#E5E5E5",
+    bordWidth: 3,
+    border: "solid",
+    borderRadius: 20,
+    maxHeight: 640,
+    backgroundColor: "white",
+    marginTop: 20,
+    marginRight: 30,
+  },
+  button: {
+    width: 132,
+    backgroundColor: "white",
+    border: "none",
+    textAlign: "left",
+    padding: 14,
+    fontFamily: "Raleway",
+    fontWeight: "bold",
+    fontSize: 18,
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
+  sectionOne: {
     display: "flex",
     flexDirection: "column",
+    padding: 20,
+    borderBottom: "solid #E5E5E5",
+  },
+  sectionTwo: {
+    display: "flex",
+    flexDirection: "column",
+    padding: 20,
   },
 }));
 
@@ -122,48 +158,101 @@ const Home = () => {
           }}
         >
           <div className={classes.sideBar}>
-            <button
-              onClick={() => {
-                setListState("");
-              }}
-            >
-              All Projects
-            </button>
-            <button
-              onClick={() => {
-                setListState("UI/UX");
-              }}
-            >
-              UI/UX
-            </button>
-            <button
-              onClick={() => {
-                setListState("Front-End");
-              }}
-            >
-              Front End
-            </button>
-            <button
-              onClick={() => {
-                setListState("Back-End");
-              }}
-            >
-              Back End
-            </button>
-            <button
-              onClick={() => {
-                setListState("GameDev/Animation");
-              }}
-            >
-              Game Dev/Animation
-            </button>
-            <button
-              onClick={() => {
-                setListState("mentor");
-              }}
-            >
-              Looking for Mentors
-            </button>
+            <div className={classes.sectionOne}>
+              <h1
+                style={{
+                  fontFamily: "Raleway",
+                  color: "#939393",
+                  fontSize: 14,
+                }}
+              >
+                PROJECTS
+              </h1>
+              <button
+                className={classes.button}
+                onClick={() => {
+                  setListState("");
+                }}
+              >
+                Feed
+              </button>
+              <button
+                className={classes.button}
+                onClick={() => {
+                  setListState("");
+                }}
+              >
+                Trending
+              </button>
+              <button
+                className={classes.button}
+                onClick={() => {
+                  setListState("");
+                }}
+              >
+                Search
+              </button>
+            </div>
+            <div className={classes.sectionTwo}>
+              <h1
+                style={{
+                  fontFamily: "Raleway",
+                  color: "#939393",
+                  fontSize: 14,
+                }}
+              >
+                SORT BY SKILLS
+              </h1>
+              <button
+                className={classes.button}
+                onClick={() => {
+                  setListState("");
+                }}
+              >
+                {" "}
+                All Projects
+              </button>
+              <button
+                className={classes.button}
+                onClick={() => {
+                  setListState("UI/UX");
+                }}
+              >
+                UI/UX
+              </button>
+              <button
+                className={classes.button}
+                onClick={() => {
+                  setListState("Front-End");
+                }}
+              >
+                Front End
+              </button>
+              <button
+                className={classes.button}
+                onClick={() => {
+                  setListState("Back-End");
+                }}
+              >
+                Back End
+              </button>
+              <button
+                className={classes.button}
+                onClick={() => {
+                  setListState("GameDev/Animation");
+                }}
+              >
+                Game Dev/Animation
+              </button>
+              <button
+                className={classes.button}
+                onClick={() => {
+                  setListState("mentor");
+                }}
+              >
+                Looking for Mentors
+              </button>
+            </div>
           </div>
           <div className={classes.items}>
             {user ? (
