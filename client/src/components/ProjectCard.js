@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProjectCard(props) {
   const project = props.project;
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-  const classes = makeStyles();
+  const classes = useStyles();
 
   return (
     <div style={{ paddingBottom: 20 }}>
