@@ -1,8 +1,20 @@
 let projects = require("./data.json");
 const express = require("express"); //Line 1
-const app = express(); //Line 2
-const port = process.env.PORT || 5000; //Line 3
+var cors = require("cors");
 
+var app = express();
+
+app.use(cors());
+const port = process.env.PORT || 5000; //Line 3
+// cors port at 3000
+var corsOptions = {
+  origin: "http://localhost:3000",
+};
+
+// Uses cors, and express json/urlencoded
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
 

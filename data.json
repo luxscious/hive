@@ -1,9 +1,11 @@
 [
   {
     "username": "luxscious",
+    "userPhoto": "https://avatars.githubusercontent.com/u/57682940?v=4",
     "projectName": "Sailor-Moon-Dash",
     "description": "sailor moon game!",
-    "picture": "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+    "picture": "https://www.looper.com/img/gallery/things-only-adults-notice-in-sailor-moon/intro-1574273828.jpg",
+    "repo": "https://github.com/luxscious/Sailor-Moon-Dash",
     "categories": ["GameDev/Animation", "Front-End"],
     "lastUpdated": "2019-11-12T18:48:42Z",
     "mentorSearch": "true",
@@ -12,9 +14,11 @@
 
   {
     "username": "luxscious",
+    "userPhoto": "https://avatars.githubusercontent.com/u/57682940?v=4",
     "projectName": "val-t",
     "description": "Valorant Tournament System",
     "picture": "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+    "repo": "https://github.com/luxscious/val-t",
     "categories": ["Front-end", "Back-End", "UI/UX"],
     "lastUpdated": "2022-01-09T06:03:46Z",
     "mentorSearch": "true",
@@ -22,9 +26,11 @@
   },
   {
     "username": "ceruleanox",
+    "userPhoto": "https://avatars.githubusercontent.com/u/7034592?v=4",
     "projectName": "hophacks",
     "description": "HopHacks Project",
     "picture": "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+    "repo": "https://github.com/ceruleanox/hophacks",
     "categories": ["Front-end", "Back-End", "UI/UX"],
     "lastUpdated": "2021-07-23T18:22:49Z",
     "mentorSearch": "false",
@@ -32,9 +38,11 @@
   },
   {
     "username": "ceruleanox",
+    "userPhoto": "https://avatars.githubusercontent.com/u/7034592?v=4",
     "projectName": "Hello-Hacktoberfest",
     "description": "Hello-Hacktoberfest Project",
     "picture": "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+    "repo": "https://github.com/ceruleanox/Hello-Hacktoberfest",
     "categories": ["Back-End"],
     "lastUpdated": "2021-07-05T08:07:41Z",
     "mentorSearch": "true",

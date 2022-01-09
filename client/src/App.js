@@ -30,7 +30,7 @@ function App() {
 
   const [user, loading, error] = useAuthState(auth);
   const [cookies, setCookie] = useCookies(["user"]);
-  console.log(loading);
+
   // console.log(loading);
   useEffect(() => {
     getRedirectResult(auth)
