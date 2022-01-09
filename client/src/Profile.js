@@ -5,26 +5,16 @@ import { useCookies } from "react-cookie";
 import NavBar from "./components/NavBar";
 import { Avatar, makeStyles } from "@material-ui/core";
 import axios from "axios";
-import bg from "./assets/combBg.svg";
+import bg from "./assets/hiveBg.svg";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import text from "./assets/hiveText.svg";
 const useStyles = makeStyles((theme) => ({
   container: {
-    position: "fixed",
-    padding: 0,
-
-    width: "100%",
-    height: "100%",
-    backgroundImage: `url(${bg})`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover ",
-
     display: "flex",
     overflow: "auto",
     alignItems: "center",
     flexDirection: "column",
-    marginTop: 90,
   },
   login: {
     fontFamily: "Raleway Light",
@@ -34,8 +24,9 @@ const useStyles = makeStyles((theme) => ({
   items: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    marginTop: 125,
+    position: "fixed",
+    top: 90,
+    right: 42,
   },
   button: {
     backgroundColor: "rgb(255,102,102,85%)",
@@ -51,17 +42,18 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#FF6666",
       cursor: "pointer",
     },
+    position: "fixed",
+    bottom: 50,
+    right: 20,
   },
 }));
 
-const getUserDetails = async (token) => {};
 const Profile = () => {
   const auth = getAuth();
   const classes = useStyles();
   const [user, setUser] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [loading, setLoading] = useState(true);
-
   const signOut = (e) => {
     e.preventDefault();
     removeCookie("oAuth");
@@ -84,6 +76,16 @@ const Profile = () => {
     <>
       <NavBar page={"profile"} />
       <div className={classes.container}>
+        <img
+          src={text}
+          alt="txt"
+          style={{ position: "fixed", left: 65, top: 227 }}
+        />
+        <img
+          src={bg}
+          alt="bgImg"
+          style={{ position: "fixed", zIndex: -1, left: 121 }}
+        />
         {loading ? (
           <div
             style={{
@@ -102,21 +104,29 @@ const Profile = () => {
             </Box>
           </div>
         ) : (
-          <div className={classes.items}>
-            <h1 className={classes.login}>{user?.login},</h1>
+          <>
+            <div className={classes.items}>
+              <h1 className={classes.login}>{user?.login},</h1>
 
-            <Avatar
-              alt="profile"
-              src={user?.avatar_url}
-              style={{ width: 193, height: 193, padding: 25 }}
-            />
-
+              <Avatar
+                alt="profile"
+                src={user?.avatar_url}
+                style={{
+                  width: 193,
+                  height: 193,
+                  padding: 25,
+                  position: "fixed",
+                  right: 57,
+                  top: 219,
+                }}
+              />
+            </div>
             <form onSubmit={signOut}>
               <button type="submit" className={classes.button}>
                 BUZZ OUT
               </button>
             </form>
-          </div>
+          </>
         )}
       </div>
     </>
