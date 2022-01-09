@@ -115,17 +115,11 @@ function RenderList(list) {
 const Home = () => {
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
-  const [username, setUsername] = useState("");
   const classes = useStyles();
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [listState, setListState] = useState("");
   const [projects, setProjects] = useState([]);
 
-  const signOut = (e) => {
-    e.preventDefault();
-    removeCookie("oAuth");
-    auth.signOut();
-  };
   //Get all lists and store them
   useEffect(() => {
     let query;
@@ -137,7 +131,6 @@ const Home = () => {
       query = "http://localhost:5000/categoryProjects?category=" + listState;
     }
     axios.get(query).then((result) => {
-      console.log(result.data);
       setProjects(result.data);
     });
   }, [listState]);

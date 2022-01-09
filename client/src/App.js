@@ -16,7 +16,6 @@ import Resources from "./Resources.js";
 import "./index.css";
 import Profile from "./Profile.js";
 import Landing from "./Landing.js";
-console.log(process.env);
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -63,7 +62,7 @@ function App() {
               <Landing />
             </Route>
             <Route path="/login">
-              {user ? <Redirect to="/dashboard" /> : <Login />}
+              {user ? <Redirect to="/community" /> : <Login />}
             </Route>
             <Route path="/profile">
               {user ? <Profile /> : <Redirect to="/login" />}
@@ -71,14 +70,14 @@ function App() {
             <Route path="/resources">
               <Resources />
             </Route>
-            <Route path="/dashboard">
+            <Route path="/community">
               <Home />
             </Route>
             <Route path="/">
               {user ? (
-                <Redirect to="/dashboard" />
+                <Redirect to="/community" />
               ) : (
-                <Redirect to="/dashboard" />
+                <Redirect to="/community" />
               )}
             </Route>
           </Switch>
