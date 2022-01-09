@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCookies } from "react-cookie";
+import NavBar from "./components/NavBar";
 
 const Home = () => {
   const auth = getAuth();
@@ -17,7 +18,7 @@ const Home = () => {
   };
   return (
     <div>
-      <h2>Home</h2>
+      <NavBar page={"community"} />
       {user ? (
         <form onSubmit={signOut}>
           <button type="submit">Sign Out</button>

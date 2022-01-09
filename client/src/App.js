@@ -13,6 +13,9 @@ import { useCookies } from "react-cookie";
 import Login from "./components/Login.js";
 import Home from "./Home.js";
 
+import "./index.css";
+import Profile from "./Profile.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyA5khC5wSAUfQ3UJfaMQofsiiNKhX7siXE",
   authDomain: "beehive-88888888.firebaseapp.com",
@@ -27,7 +30,7 @@ function App() {
 
   const [user, loading, error] = useAuthState(auth);
   const [cookies, setCookie] = useCookies(["user"]);
-
+  console.log(loading);
   // console.log(loading);
   useEffect(() => {
     getRedirectResult(auth)
@@ -56,9 +59,13 @@ function App() {
       <Router>
         <>
           <Switch>
-            <Route path="/Login">
+            <Route path="/login">
               {user ? <Redirect to="/dashboard" /> : <Login />}
             </Route>
+            <Route path="/profile">
+              {user ? <Profile /> : <Redirect to="/Login" />}
+            </Route>
+
             <Route path="/dashboard">
               <Home />
             </Route>

@@ -5,11 +5,69 @@ import {
   getRedirectResult,
   GithubAuthProvider,
 } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { makeStyles } from "@material-ui/core";
+import bg from "../assets/combBg.svg";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import gitIcon from "../assets/githubIcon.svg";
+import Navbar from "./NavBar";
+const useStyles = makeStyles((theme) => ({
+  container: {
+    position: "fixed",
+    padding: 0,
+    margn: 0,
 
+    width: "100%",
+    height: "100%",
+    backgroundImage: `url(${bg})`,
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover ",
+    zIndex: "-1",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  button: {
+    backgroundColor: "rgb(255,102,102,85%)",
+    color: "white",
+    fontFamily: "Raleway",
+    fontWeight: "semi-bold",
+    letterSpacing: 2,
+    width: 259,
+    height: 59,
+    border: 0,
+    borderRadius: 40,
+    "&:hover": {
+      backgroundColor: "#FF6666",
+      cursor: "pointer",
+    },
+  },
+
+  login: {
+    fontFamily: "Raleway Light",
+    fontSize: 64,
+  },
+  buzz: {
+    fontFamily: "Raleway Light",
+    fontSize: 30,
+    marginTop: 50,
+  },
+  items: {
+    display: "flex",
+    flexDirection: "column",
+    //justifyContent: "center",
+    alignItems: "center",
+    // marignTop: -20,
+  },
+}));
 const Login = () => {
   const provider = new GithubAuthProvider();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const classes = useStyles();
+  const auth = getAuth();
+
+  const [user, loading, error] = useAuthState(auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,12 +76,35 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Sign in</button>
-      </form>
-    </div>
+    <>
+      <Navbar page={"login"} />
+      <div className={classes.container}>
+        <div className={classes.items}>
+          <h1 className={classes.login}>LOG IN</h1>
+          <img src={gitIcon} alt="gitIcon" width="150" />
+          <h2 className={classes.buzz}>What's the buzz?</h2>
+
+          <form onSubmit={handleSubmit}>
+            <button disabled={loading} type="submit" className={classes.button}>
+              BUZZ IN
+            </button>
+            {loading ? (
+              <>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: 5,
+                  }}
+                >
+                  <CircularProgress style={{ color: "#FF6666" }} />
+                </Box>
+              </>
+            ) : null}
+          </form>
+        </div>
+      </div>
+    </>
   );
 };
 export default Login;
