@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useCookies } from "react-cookie";
 import NavBar from "./components/NavBar";
 import { Avatar, makeStyles } from "@material-ui/core";
@@ -11,12 +12,14 @@ const useStyles = makeStyles((theme) => ({
   container: {
     position: "fixed",
     padding: 0,
+
     width: "100%",
     height: "100%",
     backgroundImage: `url(${bg})`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover ",
+
     display: "flex",
     overflow: "auto",
     alignItems: "center",
@@ -27,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Raleway Light",
     fontSize: 64,
   },
+
   items: {
     display: "flex",
     flexDirection: "column",
@@ -50,13 +54,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const getUserDetails = async (token) => {};
 const Profile = () => {
   const auth = getAuth();
   const classes = useStyles();
   const [user, setUser] = useState();
-  const [cookies, removeCookie] = useCookies(["user"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [loading, setLoading] = useState(true);
 
+  console.log("USER", user);
   const signOut = (e) => {
     e.preventDefault();
     removeCookie("oAuth");
