@@ -203,15 +203,16 @@ const Home = () => {
                 SORT BY SKILLS
               </h1>
               <button
+                style={listState === "" ? { color: "#FF8776" } : {}}
                 className={classes.button}
                 onClick={() => {
                   setListState("");
                 }}
               >
-                {" "}
                 All Projects
               </button>
               <button
+                style={listState === "UI/UX" ? { color: "#FF8776" } : {}}
                 className={classes.button}
                 onClick={() => {
                   setListState("UI/UX");
@@ -220,6 +221,7 @@ const Home = () => {
                 UI/UX
               </button>
               <button
+                style={listState === "Front-End" ? { color: "#FF8776" } : {}}
                 className={classes.button}
                 onClick={() => {
                   setListState("Front-End");
@@ -228,6 +230,7 @@ const Home = () => {
                 Front End
               </button>
               <button
+                style={listState === "Back-End" ? { color: "#FF8776" } : {}}
                 className={classes.button}
                 onClick={() => {
                   setListState("Back-End");
@@ -236,6 +239,9 @@ const Home = () => {
                 Back End
               </button>
               <button
+                style={
+                  listState === "GameDev/Animation" ? { color: "#FF8776" } : {}
+                }
                 className={classes.button}
                 onClick={() => {
                   setListState("GameDev/Animation");
@@ -244,6 +250,7 @@ const Home = () => {
                 Game Dev/Animation
               </button>
               <button
+                style={listState === "mentor" ? { color: "#FF8776" } : {}}
                 className={classes.button}
                 onClick={() => {
                   setListState("mentor");

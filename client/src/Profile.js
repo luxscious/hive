@@ -6,6 +6,8 @@ import NavBar from "./components/NavBar";
 import { Avatar, makeStyles } from "@material-ui/core";
 import axios from "axios";
 import bg from "./assets/combBg.svg";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 const useStyles = makeStyles((theme) => ({
   container: {
     position: "fixed",
@@ -58,6 +60,7 @@ const Profile = () => {
   const classes = useStyles();
   const [user, setUser] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [loading, setLoading] = useState(true);
 
   console.log("USER", user);
   const signOut = (e) => {
@@ -75,6 +78,7 @@ const Profile = () => {
       })
       .then((result) => {
         setUser(result.data);
+        setLoading(false);
       });
   }, []);
   return (
@@ -84,11 +88,26 @@ const Profile = () => {
         {cookies.oAuth ? (
           <div className={classes.items}>
             <h1 className={classes.login}>{cookies.username},</h1>
-            <Avatar
-              alt="profile"
-              src={user.avatar_url}
-              style={{ width: 193, height: 193, padding: 25 }}
-            />
+            {loading ? (
+              <>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: 5,
+                  }}
+                >
+                  <CircularProgress style={{ color: "#FF6666" }} />
+                </Box>
+              </>
+            ) : (
+              <Avatar
+                alt="profile"
+                src={user?.avatar_url}
+                style={{ width: 193, height: 193, padding: 25 }}
+              />
+            )}
+
             <form onSubmit={signOut}>
               <button type="submit" className={classes.button}>
                 BUZZ OUT

@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   items: {
     display: "flex",
     flexDirection: "column",
-
+    marginTop: -150,
     alignItems: "center",
   },
 }));
@@ -102,6 +102,19 @@ const Login = () => {
             ) : null}
           </form>
         </div>
+        <p
+          style={{
+            fontFamily: "Raleway",
+            fontSize: 28,
+            width: 900,
+            textAlign: "center",
+            position: "fixed",
+            bottom: 50,
+          }}
+        >
+          Not part of the hive yet? Continue as a guest by browsing our
+          ‘Community’ and ‘Resources’ tabs to learn more!
+        </p>
       </div>
     </>
   );
