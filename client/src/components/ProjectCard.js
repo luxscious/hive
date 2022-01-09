@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 // const handleSubmit = (e) => {
 //   e.preventDefault(); // Prevents default refresh by the browser
-//   emailjs.sendForm(`gmail`, apiKey.TEMPLATE_ID, e.target, apiKey.USER_ID)
+//   emailjs.sendForm(`gmail`, process.env.REACT_APP_EMAIL_USER_ID, e.target,process.env.REACT_APP_TEMPLATE_ID)
 //   .then((result) => {
 //   alert("Message Sent, We will get back to you shortly", result.text);
 //   },
