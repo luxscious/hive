@@ -6,7 +6,6 @@ import NavBar from "./components/NavBar";
 import { makeStyles } from "@material-ui/core";
 import bg from "./assets/ProfileBg.svg";
 
-import plus from "./assets/plus.svg";
 import { Link } from "react-router-dom";
 
 import text from "./assets/landingTxt.svg";
