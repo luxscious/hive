@@ -40,3 +40,8 @@ code {
     url("//db.onlinewebfonts.com/t/010aae55eee63f16095bc47f7cffae1b.svg#Raleway")
       format("svg");
 }
+
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
