@@ -14,13 +14,13 @@ const useStyles = makeStyles((theme) => ({
   container: {
     position: "fixed",
     padding: 0,
-    marginTop: 90,
+
     width: "100%",
     height: "100%",
     backgroundImage: `url(${bg})`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover ",
+    backgroundSize: "cover",
 
     display: "flex",
     overflow: "auto",
