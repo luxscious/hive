@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCookies } from "react-cookie";
@@ -10,7 +10,7 @@ import text from "./assets/inspoText.svg";
 import plus from "./assets/plus.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { StylesContext } from "@material-ui/styles";
+
 const useStyles = makeStyles((theme) => ({
   container: {
     position: "fixed",
@@ -115,18 +115,11 @@ function RenderList(list) {
 
 const Home = () => {
   const auth = getAuth();
-  const [user, loading, error] = useAuthState(auth);
-  const [username, setUsername] = useState("");
+  const [user] = useAuthState(auth);
   const classes = useStyles();
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [listState, setListState] = useState("");
   const [projects, setProjects] = useState([]);
 
-  const signOut = (e) => {
-    e.preventDefault();
-    removeCookie("oAuth");
-    auth.signOut();
-  };
   //Get all lists and store them
   useEffect(() => {
     let query;

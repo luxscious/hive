@@ -1,14 +1,9 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { makeStyles } from "@material-ui/core";
-import { getAuth } from "firebase/auth";
 import { useCookies } from "react-cookie";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { Avatar } from "@material-ui/core";
 import add from "../assets/add.svg";
 import star from "../assets/Star.svg";
@@ -22,9 +17,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function ProjectCard(props) {
   const project = props.project;
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-  const classes = makeStyles();
-  console.log(project.userPhoto);
+  const [cookies] = useCookies(["user"]);
+  const classes = useStyles();
   return (
     <div style={{ paddingBottom: 20 }}>
       <Card className={classes.card} style={{ backgroundColor: "#C4C4C4" }}>
@@ -76,6 +70,7 @@ export default function ProjectCard(props) {
           image={project.picture}
           width="760"
           alt="project picture"
+          style={{ backgroundColor: "white" }}
         />
         <CardContent>
           <div

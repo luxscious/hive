@@ -67,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Resources = () => {
   const classes = useStyles();
-  console.log(process.env);
   return (
     <>
       <NavBar page={"resources"} />

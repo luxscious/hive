@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,17 +6,16 @@ import {
   Redirect,
 } from "react-router-dom";
 import { initializeApp } from "firebase/app";
-import axios from "axios";
 import { getAuth, getRedirectResult, GithubAuthProvider } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCookies } from "react-cookie";
 import Login from "./components/Login.js";
 import Home from "./Home.js";
 import Resources from "./Resources.js";
-import "./index.css";
 import Profile from "./Profile.js";
 import Landing from "./Landing.js";
-console.log(process.env);
+import "./index.css";
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -29,8 +28,8 @@ const firebaseApp = initializeApp(firebaseConfig);
 function App() {
   const auth = getAuth();
 
-  const [user, loading, error] = useAuthState(auth);
-  const [cookies, setCookie] = useCookies(["user"]);
+  const [user, loading] = useAuthState(auth);
+  const [setCookie] = useCookies(["user"]);
 
   useEffect(() => {
     getRedirectResult(auth)

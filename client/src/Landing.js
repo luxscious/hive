@@ -1,12 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { getAuth } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useCookies } from "react-cookie";
+import React from "react";
 import NavBar from "./components/NavBar";
 import { makeStyles } from "@material-ui/core";
 import bg from "./assets/ProfileBg.svg";
 
-import plus from "./assets/plus.svg";
 import { Link } from "react-router-dom";
 
 import text from "./assets/landingTxt.svg";
@@ -62,14 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Landing = () => {
-  const auth = getAuth();
-  const [user, loading, error] = useAuthState(auth);
-  const [username, setUsername] = useState("");
   const classes = useStyles();
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-  const [listState, setListState] = useState("");
-  const [projects, setProjects] = useState([]);
-
   return (
     <>
       <NavBar />

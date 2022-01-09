@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  getAuth,
-  signInWithRedirect,
-  getRedirectResult,
-  GithubAuthProvider,
-} from "firebase/auth";
+import { getAuth, signInWithRedirect, GithubAuthProvider } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { makeStyles } from "@material-ui/core";
 import bg from "../assets/combBg.svg";
@@ -17,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     padding: 0,
     margn: 0,
-
     width: "100%",
     height: "100%",
     backgroundImage: `url(${bg})`,
@@ -65,8 +59,7 @@ const Login = () => {
   const provider = new GithubAuthProvider();
   const classes = useStyles();
   const auth = getAuth();
-
-  const [user, loading, error] = useAuthState(auth);
+  const [loading] = useAuthState(auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
