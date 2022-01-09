@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,10 +6,10 @@ import {
   Redirect,
 } from "react-router-dom";
 import { initializeApp } from "firebase/app";
-
+import axios from "axios";
 import { getAuth, getRedirectResult, GithubAuthProvider } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import { useCookies } from "react-cookie";
 import Login from "./components/Login.js";
 import Home from "./Home.js";
 
@@ -22,33 +22,35 @@ const firebaseConfig = {
   appId: "1:704359860217:web:be129ca99d7714bf0b1f28",
 };
 const firebaseApp = initializeApp(firebaseConfig);
-
 function App() {
   const auth = getAuth();
 
   const [user, loading, error] = useAuthState(auth);
-  console.log(user);
-  if (!user) {
-    getRedirectResult()
+  const [cookies, setCookie] = useCookies(["user"]);
+
+  // console.log(loading);
+  useEffect(() => {
+    getRedirectResult(auth)
       .then((result) => {
         const credential = GithubAuthProvider.credentialFromResult(result);
         if (credential) {
           // This gives you a GitHub Access Token. You can use it to access the GitHub API.
           const token = credential.accessToken;
-          // ...
+          setCookie("oAuth", token);
         }
-        console.log(credential.accessToken);
-
+        // The signed-in user info.
         const user = result.user;
       })
       .catch((error) => {
+        // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
+        // The email of the user's account used.
         const email = error.email;
+        // The AuthCredential type that was used.
         const credential = GithubAuthProvider.credentialFromError(error);
       });
-  }
-
+  }, [user, loading]);
   return (
     <div className="App">
       <Router>

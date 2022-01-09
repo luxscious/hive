@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { AuthCredential } from "firebase/auth";
-
-import axios from "axios";
+import { useCookies } from "react-cookie";
 
 const Home = () => {
   const auth = getAuth();
@@ -11,19 +9,10 @@ const Home = () => {
   const [user, loading, error] = useAuthState(auth);
   const [username, setUsername] = useState("");
 
-  //   if (user) {
-  //     user.getIdToken().then((result) => {
-  //       console.log(result);
-  //       //   axios.get("https://api.github.com/user", {
-  //       //     headers: {
-  //       //       Authorization: `token ${}`,
-  //       //     },
-  //       //   });
-  //     });
-  //   }
-
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const signOut = (e) => {
     e.preventDefault();
+    removeCookie("oAuth");
     auth.signOut();
   };
   return (
