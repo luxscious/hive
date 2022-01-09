@@ -54,3 +54,14 @@ app.get("/categoryProjects", (req, res) => {
   }
   res.json(allProjects);
 });
+
+//get all projects needing a mentor
+app.get("/needMentors", (req, res) => {
+  const allProjects = [];
+  for (const i in projects) {
+    if (projects[i].mentorSearch === "true") {
+      allProjects.push(projects[i]);
+    }
+  }
+  res.json(allProjects);
+});
