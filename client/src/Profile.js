@@ -87,7 +87,7 @@ const Profile = () => {
       <div className={classes.container}>
         {cookies.oAuth ? (
           <div className={classes.items}>
-            <h1 className={classes.login}>{cookies.username},</h1>
+            <h1 className={classes.login}>{user?.login},</h1>
             {loading ? (
               <>
                 <Box
