@@ -9,6 +9,8 @@ import add from "../assets/add.svg";
 import star from "../assets/Star.svg";
 import eye from "../assets/eye.svg";
 import collab from "../assets/collaborate.svg";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -30,8 +32,14 @@ export default function ProjectCard(props) {
   const project = props.project;
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const classes = useStyles();
+  const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth);
 
+  React.useEffect(() => {
+    console.log("refresh");
+  }, [user, cookies]);
   let date = project.lastUpdated.substring(0, 10);
+  console.log(cookies);
   return (
     <div style={{ paddingBottom: 20 }}>
       <Card className={classes.card} style={{ backgroundColor: "#C4C4C4" }}>
@@ -49,7 +57,7 @@ export default function ProjectCard(props) {
             >
               {project.username}
             </h1>
-            {cookies.oAuth ? (
+            {cookies?.oAuth ? (
               <div
                 style={{
                   display: "flex",

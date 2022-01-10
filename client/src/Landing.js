@@ -28,10 +28,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${text})`,
     backgroundRepeat: "no-repeat",
     minWidth: 668,
-    marginTop: 132,
+    marginTop: 150,
     minHeight: 191,
   },
   items: {
+    marginTop: 250,
     marginLeft: -700,
     flexDirection: "column",
   },
